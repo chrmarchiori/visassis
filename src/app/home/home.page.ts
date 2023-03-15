@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 
-import { CameraPreview, CameraPreviewOptions } from '@capacitor-community/camera-preview';
+import { CameraPreview, CameraPreviewOptions, CameraSampleOptions } from '@capacitor-community/camera-preview';
+
+import { imageConverter } from 'src/utils/imageConverter';
 
 
 @Component({
@@ -11,10 +13,18 @@ import { CameraPreview, CameraPreviewOptions } from '@capacitor-community/camera
 })
 export class HomePage {
 
+  public similaridade = null;
+
   private cameraPreviewOptions: CameraPreviewOptions = {
     position: 'rear',
-    height: 1920,
-    width: 1080
+    height: 914,
+    width: 412,
+    enableZoom: true,
+    toBack: true
+  };
+
+  private cameraSampleOptions: CameraSampleOptions = {
+    quality: 50
   };
 
   constructor() { }
@@ -23,13 +33,16 @@ export class HomePage {
     CameraPreview.start(this.cameraPreviewOptions);
   }
 
-  /*initCamera() {
-    CameraPreview.start({
-      parent: "content",
-      toBack: true,
-      position: "front"
-    });
-  }*/
+
+  public comparaImagens() {
+    
+    CameraPreview.captureSample(this.cameraSampleOptions)
+      .then(result => {
+        imageConverter.compareImages('./src/assets/carteira.png', result.value)
+      })
+      .catch(error => console.log(error));   
+    
+  }
 
 
 }

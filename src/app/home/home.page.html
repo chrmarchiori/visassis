@@ -4,14 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- <ion-content 
-  [fullscreen]="true" 
-  class="content-camera-preview"
-  id="content"
->
-  <ion-button
-    onclick="initCamera()"
-  >
-    Mostrar Camera Preview
-  </ion-button> 
-</ion-content> -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-button slot="start" (click)="comparaImagens()">
+      <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+    </ion-button>
+    <ion-title ngIf="similaridade != null">{{'Similaridade: ' + similaridade}}</ion-title>
+  </ion-toolbar>
+</ion-footer>

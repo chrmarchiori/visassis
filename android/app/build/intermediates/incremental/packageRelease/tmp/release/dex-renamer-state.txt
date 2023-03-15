@@ -1,0 +1,4 @@
+#Wed Mar 15 14:34:30 BRT 2023
+base.0=C\:\\Marcos\\Playground\\visassis-app\\visassis\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

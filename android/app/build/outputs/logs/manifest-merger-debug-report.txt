@@ -11,10 +11,10 @@ INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\An
 	android:name
 		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:29:13-62
 manifest
-ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
+ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
 MERGED from [:capacitor-community-camera-preview] C:\Marcos\Playground\visassis-app\visassis\node_modules\@capacitor-community\camera-preview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:capacitor-app] C:\Marcos\Playground\visassis-app\visassis\node_modules\@capacitor\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:capacitor-haptics] C:\Marcos\Playground\visassis-app\visassis\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
@@ -55,20 +55,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\Usuario\
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Usuario\.gradle\caches\transforms-3\50164032edb9f678c1f5e79c6c6889d6\transformed\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [org.apache.cordova:framework:10.1.1] C:\Users\Usuario\.gradle\caches\transforms-3\b294c7b79e70a99f26ef48fae3bee632\transformed\jetified-framework-10.1.1\AndroidManifest.xml:20:1-27:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-3\b2ffb75c7ede1f78772b204cf32e7af2\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
 	package
 		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:3:5-29
 		INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
+		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
 		INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-45:12
+		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:1-43:12
 		INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:2:11-69
@@ -129,9 +129,9 @@ ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\Andro
 	android:name
 		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:41:22-64
 uses-permission#android.permission.CAMERA
-ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:43:5-65
+ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:42:5-65
 	android:name
-		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:43:22-62
+		ADDED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml:42:22-62
 uses-sdk
 INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Marcos\Playground\visassis-app\visassis\android\app\src\main\AndroidManifest.xml

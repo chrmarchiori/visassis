@@ -13,14 +13,15 @@ import { imageConverter } from 'src/utils/imageConverter';
 })
 export class HomePage {
 
-  public similaridade = null;
+  public simi: unknown;
 
   private cameraPreviewOptions: CameraPreviewOptions = {
     position: 'rear',
-    height: 914,
-    width: 412,
-    enableZoom: true,
-    toBack: true
+    height: 715,
+    width: 540,
+    x: 0,
+    y: 58,
+    storeToFile: true
   };
 
   private cameraSampleOptions: CameraSampleOptions = {
@@ -38,7 +39,11 @@ export class HomePage {
     
     CameraPreview.captureSample(this.cameraSampleOptions)
       .then(result => {
+        console.log(result.value);
         imageConverter.compareImages('./src/assets/carteira.png', result.value)
+          .then(similaridade => {
+            this.simi = similaridade
+          })
       })
       .catch(error => console.log(error));   
     

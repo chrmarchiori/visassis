@@ -17,14 +17,12 @@ export class HomePage {
 
   private cameraPreviewOptions: CameraPreviewOptions = {
     position: 'rear',
-    height: window.screen.height,
-    width: window.screen.width,
-    // x: 0,
-    // y: 58,
+    height: 715,
+    width: 540,
+    x: 0,
+    y: 58,
     storeToFile: true,
-    enableZoom: true,
-    parent: "content",
-    toBack: true
+    enableZoom: true
   };
 
   private cameraSampleOptions: CameraSampleOptions = {

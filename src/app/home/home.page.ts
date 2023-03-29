@@ -5,6 +5,8 @@ import { CameraPreview, CameraPreviewOptions, CameraSampleOptions } from '@capac
 import { imageConverter } from 'src/utils/imageConverter';
 import { AlertController } from '@ionic/angular';
 
+// import { ImageColorPicker } from 'src/utils/image-color-picker';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
-  public simi: unknown;
+  public corIdentificada = null;
 
   private cameraPreviewOptions: CameraPreviewOptions = {
     position: 'rear',
@@ -36,29 +38,21 @@ export class HomePage {
   }
 
 
-  async presentAlert(aviso: string) {
-    const alert = await this.alertController.create({
-      header: 'Alerta',
-      message: aviso,
-      buttons: ['OK'],
-    });
-
-    await alert.present();
-  }
-
-
-  public comparaImagens() {
-
-    CameraPreview.captureSample(this.cameraSampleOptions)
-      .then(result => {
-        this.presentAlert(result.value);
-        // imageConverter.compareImages('./src/assets/carteira.png', result.value)
-        //   .then(similaridade => {
-        //     this.simi = similaridade
-        //   })
-      })
-      .catch(error => this.presentAlert(error));   
+  private identificarCor() {
     
+      // var colorPicker = new ImageColorPicker('.thumbnail img', {
+      //   preview: '.preview',
+      //   clicked: function(data){
+      //     // instance data
+      //     console.log(data);
+          
+      //     document.getElementById('hex').innerHTML = data.result_hex;
+      //     document.getElementById('rgb').innerHTML = data.result_rgb_string;
+    
+      //     document.body.style.background = data.result_hex;
+      //   }
+      // });
+
   }
 
 

@@ -77,6 +77,18 @@ class App {
 
     const context = this.$canvas.getContext("2d");
 
+    context.drawImage(
+      this.$camera,
+      xStart,
+      yStart,
+      imageCropSize.width,
+      imageCropSize.height,
+      0,
+      0,
+      imageCropSize.width,
+      imageCropSize.height
+    );
+
     try {
       const data = context.getImageData(
         0,

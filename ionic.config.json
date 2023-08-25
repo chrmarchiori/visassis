@@ -1,8 +1,0 @@
-{
-  "name": "visassis",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
-  "type": "angular"
-}

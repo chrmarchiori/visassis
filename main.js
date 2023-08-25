@@ -88,7 +88,7 @@ class App {
       .getUserMedia({
         video: {
           facingMode: {
-            exact: "environment",
+            ideal: "environment",
           },
         },
         audio: false,

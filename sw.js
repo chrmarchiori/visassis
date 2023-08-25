@@ -1,13 +1,12 @@
 const staticDevCoffee = "dev-coffee-site-v1";
 const assets = [
-  "/",
-  "/index.html",
-  "/styles/reset.css",
-  "/styles/custom.css",
+  "index.html",
+  "styles/reset.css",
+  "styles/custom.css",
   "main.js",
   "sw.js",
-  "/assets/volume-icon.svg",
-  "/assets/pwa-icons/512.png",
+  "assets/volume-icon.svg",
+  "assets/pwa-icons/512.png",
 ];
 
 self.addEventListener("install", (installEvent) => {

@@ -8,7 +8,7 @@
     "orientation": "portrait-primary",
     "icons": [
       {
-        "src": "/assets/pwa-icons/512.png",
+        "src": "assets/pwa-icons/512.png",
         "type": "image/png", "sizes": "512x512"
       }
     ]

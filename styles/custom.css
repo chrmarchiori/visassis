@@ -52,3 +52,7 @@ button {
 button:hover {
     background: #53b2e6;
 }
+
+#canvas {
+    visibility: hidden;
+}

@@ -87,9 +87,7 @@ class App {
     navigator.mediaDevices
       .getUserMedia({
         video: {
-          facingMode: {
-            ideal: "environment",
-          },
+          facingMode: "environment",
         },
         audio: false,
       })

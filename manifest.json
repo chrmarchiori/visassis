@@ -1,0 +1,15 @@
+{
+    "name": "Visassis",
+    "short_name": "visassis",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#fdfdfd",
+    "theme_color": "#374957",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "/assets/pwa-icons/512.png",
+        "type": "image/png", "sizes": "512x512"
+      }
+    ]
+}

@@ -77,17 +77,6 @@ class App {
 
     const context = this.$canvas.getContext("2d");
 
-    context.drawImage(
-      this.$camera,
-      xStart,
-      yStart,
-      imageCropSize.width,
-      imageCropSize.height,
-      0,
-      0,
-      imageCropSize.width,
-      imageCropSize.height
-    );
     try {
       const data = context.getImageData(
         0,
@@ -104,7 +93,11 @@ class App {
 
       console.log(hsl);
 
-      this.say("cor");
+      const colorKey = [averageColor.r, averageColor.g, averageColor.b];
+      const color = colorName[colorKey];
+      const colorNameText = color ? color[1] : 'Cor não encontrada';
+
+      this.say(colorNameText);
     } catch (e) {
       console.log(e);
     }

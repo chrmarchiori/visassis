@@ -14,7 +14,7 @@ body {
 
 #app {
     width: 100%;
-    max-width: 360px;
+    max-width: 380px;
     padding: 36px 35px;
     margin: 0 auto;
     height: 100vh;
@@ -28,15 +28,26 @@ body {
 
 .camera-area {
     margin-bottom: 28px;
+    position: relative;
 }
 
 #camera {
-    aspect-ratio: 290/360;
+    aspect-ratio: 1;
     object-fit: cover;
     object-position: center;
     border-radius: 33px;
     border: 1px solid #000;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#indicator {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    border: 2px solid #089FF3;
 }
 
 .toolbar {

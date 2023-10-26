@@ -4,6 +4,7 @@ const $takeColorButton = document.querySelector("#takeColor");
 const $colorResult = document.querySelector("#color-result");
 const $allowCamera = document.querySelector("#allowCamera");
 const $errorSection = document.querySelector("#error-popup");
+const $indicator = document.querySelector("#indicator");
 
 // Error showing
 function addError(text) {
@@ -38,6 +39,9 @@ class App {
     navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
       $this.cameraSettings = stream.getTracks()[0].getSettings();
       $camera.srcObject = stream;
+
+      $indicator.style.width = `${60}px`;
+      $indicator.style.height = `${60}px`;
     });
 
     $takeColorButton.addEventListener("click", async function () {
@@ -66,13 +70,16 @@ class App {
   }
 
   takePhoto() {
-    const xStart = this.cameraSettings.width * 0.4;
-    const yStart = this.cameraSettings.height * 0.4;
+    const xStart = this.cameraSettings.height * 0.5 - 40;
+    const yStart = this.cameraSettings.width * 0.5 - 40;
 
     const imageCropSize = {
-      width: this.cameraSettings.width * 0.2,
-      height: this.cameraSettings.height * 0.2,
+      width: 80,
+      height: 80,
     };
+
+    $canvas.width = imageCropSize.width;
+    $canvas.height = imageCropSize.height;
 
     const context = $canvas.getContext("2d");
 

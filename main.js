@@ -1,7 +1,12 @@
-// Error showing
+const $camera = document.querySelector("#camera");
+const $canvas = document.querySelector("#canvas");
+const $takeColorButton = document.querySelector("#takeColor");
+const $colorResult = document.querySelector("#color-result");
+const $allowCamera = document.querySelector("#allowCamera");
+const $errorSection = document.querySelector("#error-popup");
 
+// Error showing
 function addError(text) {
-  const $errorSection = document.querySelector("#error-popup");
   const currentErrors = $errorSection.innerHTML;
   const newErrors = currentErrors + `<p>${text}</p>`;
 
@@ -18,55 +23,7 @@ window.onerror = (text) => {
   addError(`Global - ${text}`);
 };
 
-function rgbToHsl(r, g, b) {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-
-  let h,
-    s,
-    l = (max + min) / 2;
-
-  if (max === min) {
-    h = s = 0; // Monochromatic
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
-    }
-
-    h /= 6;
-  }
-
-  // Convert hue to degrees
-  h = Math.round(h * 360);
-  // Convert saturation and lightness to percentages
-  s = Math.round(s * 100);
-  l = Math.round(l * 100);
-
-  return { h, s, l };
-}
-
 class App {
-  $camera = document.querySelector("#camera");
-  $canvas = document.querySelector("#canvas");
-  $takeColorButton = document.querySelector("#takeColor");
-  $colorResult = document.querySelector("#color-result");
-  $allowCamera = document.querySelector("#allowCamera");
-
   cameraSettings = {};
 
   start() {
@@ -74,25 +31,41 @@ class App {
 
     const constraints = {
       video: {
-        facingMode: {
-          exact: "environment",
-        },
+        facingMode: "environment",
       },
     };
 
     navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
       $this.cameraSettings = stream.getTracks()[0].getSettings();
-      $this.$camera.srcObject = stream;
+      $camera.srcObject = stream;
     });
 
-    // this.$allowCamera.addEventListener("click", async function () {});
+    $takeColorButton.addEventListener("click", async function () {
+      const image = $this.takePhoto();
+      if (image) {
+        const color = $this.getAverageColor(image);
+        const averageColorHSL = RGBtoHSL(color.r, color.g, color.b);
 
-    this.$takeColorButton.addEventListener("click", async function () {
-      $this.takeColor();
+        const rgb = `rgb(${color.r},${color.g},${color.b})`;
+        const hsl = `hsl(${averageColorHSL.h},${averageColorHSL.s}%,${averageColorHSL.l}%)`;
+
+        console.log(rgb, hsl);
+        overrideError(hsl);
+
+        document.body.style.backgroundColor = rgb;
+
+        const colorName = getColorName.hsl3(
+          averageColorHSL.h,
+          averageColorHSL.s,
+          averageColorHSL.l
+        );
+
+        $this.say(colorName);
+      }
     });
   }
 
-  takeColor() {
+  takePhoto() {
     const xStart = this.cameraSettings.width * 0.4;
     const yStart = this.cameraSettings.height * 0.4;
 
@@ -101,10 +74,10 @@ class App {
       height: this.cameraSettings.height * 0.2,
     };
 
-    const context = this.$canvas.getContext("2d");
+    const context = $canvas.getContext("2d");
 
     context.drawImage(
-      this.$camera,
+      $camera,
       xStart,
       yStart,
       imageCropSize.width,
@@ -116,36 +89,14 @@ class App {
     );
 
     try {
-      const data = context.getImageData(
+      return context.getImageData(
         0,
         0,
         imageCropSize.width,
         imageCropSize.height
       );
-      const averageColor = this.getAverageColor(data);
-      const averageColorHsl = rgbToHsl(
-        averageColor.r,
-        averageColor.g,
-        averageColor.b
-      );
-
-      const rgb = `rgb(${averageColor.r},${averageColor.g},${averageColor.b})`;
-      const hsl = `hsl(${averageColorHsl.h},${averageColorHsl.s}%,${averageColorHsl.l}%)`;
-
-      console.log(rgb, hsl);
-      overrideError(hsl);
-
-      document.body.style.backgroundColor = rgb;
-
-      const colorName = getColorName.hsl1(
-        averageColorHsl.h,
-        averageColorHsl.s,
-        averageColorHsl.l
-      );
-
-      this.say(colorName);
     } catch (e) {
-      console.log(e);
+      return null;
     }
   }
 

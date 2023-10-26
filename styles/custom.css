@@ -56,3 +56,12 @@ button:hover {
 #canvas {
     visibility: hidden;
 }
+
+#error-popup {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ff5858;
+    padding: 20px;
+}

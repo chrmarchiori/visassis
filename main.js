@@ -1,40 +1,63 @@
-function getClosestColorName(r, g, b) {
-  const colorTable  = [
-    { name: "Vermelho", rgb: [255, 0, 0] },
-    { name: "Verde", rgb: [0, 255, 0] },
-    { name: "Azul", rgb: [0, 0, 255] },
-    { name: "Amarelo", rgb: [255, 255, 0] },
-    { name: "Roxo", rgb: [128, 0, 128] },
-    { name: "Laranja", rgb: [255, 165, 0] },
-    { name: "Rosa", rgb: [255, 192, 203] },
-    { name: "Marrom", rgb: [165, 42, 42] },
-    { name: "Cinza", rgb: [128, 128, 128] },
-    { name: "Preto", rgb: [0, 0, 0] },
-    { name: "Branco", rgb: [255, 255, 255] },
-    { name: "Ciano", rgb: [0, 255, 255] },
-    { name: "Magenta", rgb: [255, 0, 255] },
-    { name: "Turquesa", rgb: [64, 224, 208] },
-    { name: "Dourado", rgb: [255, 215, 0] },
-    { name: "Prateado", rgb: [192, 192, 192] },
-  ];
+// Error showing
 
-  let closestColor = colorTable[0];
-  let minDistance = Number.MAX_VALUE;
+function addError(text) {
+  const $errorSection = document.querySelector("#error-popup");
+  const currentErrors = $errorSection.innerHTML;
+  const newErrors = currentErrors + `<p>${text}</p>`;
 
-  for (const color of colorTable) {
-    const distance = Math.sqrt(
-      Math.pow(r - color.rgb[0], 2) +
-      Math.pow(g - color.rgb[1], 2) +
-      Math.pow(b - color.rgb[2], 2)
-    );
+  $errorSection.innerHTML = newErrors;
+}
 
-    if (distance < minDistance) {
-      minDistance = distance;
-      closestColor = color;
+function overrideError(text) {
+  const $errorSection = document.querySelector("#error-popup");
+
+  $errorSection.innerHTML = `<p>${text}</p>`;
+}
+
+window.onerror = (text) => {
+  addError(`Global - ${text}`);
+};
+
+function rgbToHsl(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+
+  let h,
+    s,
+    l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0; // Monochromatic
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
     }
+
+    h /= 6;
   }
 
-  return closestColor.name;
+  // Convert hue to degrees
+  h = Math.round(h * 360);
+  // Convert saturation and lightness to percentages
+  s = Math.round(s * 100);
+  l = Math.round(l * 100);
+
+  return { h, s, l };
 }
 
 class App {
@@ -49,17 +72,18 @@ class App {
   start() {
     const $this = this;
 
-    navigator.mediaDevices
-      .getUserMedia({
-        video: {
-          facingMode: "environment",
+    const constraints = {
+      video: {
+        facingMode: {
+          exact: "environment",
         },
-        audio: false,
-      })
-      .then((stream) => {
-        $this.cameraSettings = stream.getTracks()[0].getSettings();
-        $this.$camera.srcObject = stream;
-      });
+      },
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+      $this.cameraSettings = stream.getTracks()[0].getSettings();
+      $this.$camera.srcObject = stream;
+    });
 
     // this.$allowCamera.addEventListener("click", async function () {});
 
@@ -99,19 +123,31 @@ class App {
         imageCropSize.height
       );
       const averageColor = this.getAverageColor(data);
-      
+      const averageColorHsl = rgbToHsl(
+        averageColor.r,
+        averageColor.g,
+        averageColor.b
+      );
+
       const rgb = `rgb(${averageColor.r},${averageColor.g},${averageColor.b})`;
-        
+      const hsl = `hsl(${averageColorHsl.h},${averageColorHsl.s}%,${averageColorHsl.l}%)`;
+
+      console.log(rgb, hsl);
+      overrideError(hsl);
+
       document.body.style.backgroundColor = rgb;
 
-      const colorName = getClosestColorName(averageColor.r, averageColor.g, averageColor.b)
+      const colorName = getColorName.hsl1(
+        averageColorHsl.h,
+        averageColorHsl.s,
+        averageColorHsl.l
+      );
 
       this.say(colorName);
     } catch (e) {
       console.log(e);
     }
   }
-  
 
   getAverageColor(imageData) {
     const blockSize = 5;

@@ -3,6 +3,7 @@ const assets = [
   "index.html",
   "styles/reset.css",
   "styles/custom.css",
+  "color-tables.js",
   "main.js",
   "sw.js",
   "assets/volume-icon.svg",

@@ -25,6 +25,8 @@
 <body>
     <div id="app">
         <h1 class="title">Seja <b>Bem-Vindo</b></h1>
+        <p id="check1">a</p>
+        <p id="check2">b</p>
         <div class="camera-area">
             <video id="camera" autoPlay playsInline muted></video>
         </div>
@@ -34,7 +36,11 @@
             <button id="takeColor">Identificar cor</button>
         </div>
         <canvas id="canvas" width="320" height="240"></canvas>
+        <div id="error-popup">
+            <p>Error list</p>
+        </div>
     </div>
+    <script type="text/javascript" src="color-tables.js"></script>
     <script type="text/javascript" src="main.js"></script>
 </body>
 

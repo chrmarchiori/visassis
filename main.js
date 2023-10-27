@@ -52,17 +52,12 @@ class App {
 
         const rgb = `rgb(${color.r},${color.g},${color.b})`;
         const hsl = `hsl(${averageColorHSL.h},${averageColorHSL.s}%,${averageColorHSL.l}%)`;
-
-        console.log(rgb, hsl);
-        overrideError(hsl);
+        
+        overrideError(rgb);
 
         document.body.style.backgroundColor = rgb;
 
-        const colorName = getColorName.hsl3(
-          averageColorHSL.h,
-          averageColorHSL.s,
-          averageColorHSL.l
-        );
+        const colorName = getColorName.rgb2(color.r, color.g, color.b);
 
         $this.say(colorName);
       }
